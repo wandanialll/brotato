@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Brotato</title>
+  <meta name="description" content="Look after Brotato, a little pixel cat in a straw hat.">
+  <meta name="theme-color" content="#ffe9c4">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Brotato">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="device">
+    <header class="top">
+      <button class="name" id="name" type="button" aria-label="Rename your cat">Brotato</button>
+      <div class="meta">
+        <span id="age">Day 1</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span id="clock">--:--</span>
+      </div>
+    </header>
+
+    <section class="stage" id="stage" aria-label="Your cat's room">
+      <div class="window" aria-hidden="true"><div class="sky"><span class="orb"></span></div></div>
+      <div class="frame" aria-hidden="true"></div>
+      <div class="floor" aria-hidden="true"></div>
+
+      <div class="poops" id="poops" aria-hidden="true"></div>
+
+      <div class="speech" id="speech" role="status" aria-live="polite"></div>
+
+      <button class="pet" id="pet" type="button" aria-label="Pet your cat">
+        <span class="shadow" aria-hidden="true"></span>
+        <span class="sprite">
+          <img src="assets/cat.png" alt="" draggable="false" width="512" height="512">
+          <span class="lid lid-l" aria-hidden="true"></span>
+          <span class="lid lid-r" aria-hidden="true"></span>
+        </span>
+        <span class="status-icon" id="statusIcon" aria-hidden="true"></span>
+      </button>
+
+      <div class="fx" id="fx" aria-hidden="true"></div>
+      <div class="dark" aria-hidden="true"></div>
+      <div class="zzz" aria-hidden="true"><span>z</span><span>z</span><span>Z</span></div>
+
+      <div class="game-hud" id="gameHud" hidden>
+        <span>Catch the yarn!</span>
+        <span><b id="gameScore">0</b> · <b id="gameTime">12</b>s</span>
+      </div>
+      <button class="yarn" id="yarn" type="button" aria-label="Yarn ball" hidden></button>
+
+      <div class="menu" id="feedMenu" hidden>
+        <button type="button" data-food="meal"><i data-icon="fish"></i>Fish dinner</button>
+        <button type="button" data-food="snack"><i data-icon="cookie"></i>Treat</button>
+        <button type="button" data-food="cancel" class="ghost">Not now</button>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Stats">
+      <div class="stat" data-stat="hunger"><i data-icon="fish"></i><span class="label">Food</span><span class="bar"></span></div>
+      <div class="stat" data-stat="fun"><i data-icon="heart"></i><span class="label">Joy</span><span class="bar"></span></div>
+      <div class="stat" data-stat="energy"><i data-icon="bolt"></i><span class="label">Energy</span><span class="bar"></span></div>
+      <div class="stat" data-stat="clean"><i data-icon="drop"></i><span class="label">Clean</span><span class="bar"></span></div>
+    </section>
+
+    <nav class="actions" aria-label="Actions">
+      <button type="button" id="btnFeed"><i data-icon="fish"></i><span>Feed</span></button>
+      <button type="button" id="btnPlay"><i data-icon="yarn"></i><span>Play</span></button>
+      <button type="button" id="btnClean"><i data-icon="soap"></i><span>Clean</span></button>
+      <button type="button" id="btnSleep"><i data-icon="moon"></i><span>Sleep</span></button>
+      <button type="button" id="btnMeds" class="meds" hidden><i data-icon="pill"></i><span>Meds</span></button>
+    </nav>
+
+    <p class="install" id="installHint" hidden>
+      <button type="button" id="btnInstall">Install Brotato</button>
+    </p>
+  </main>
+
+  <dialog id="nameDialog">
+    <form method="dialog">
+      <img src="assets/cat.png" alt="" width="96" height="96">
+      <h2>A kitten has arrived!</h2>
+      <label for="nameInput">What will you call them?</label>
+      <input id="nameInput" name="name" maxlength="14" autocomplete="off" value="Brotato">
+      <button type="submit" value="ok">That's the name</button>
+    </form>
+  </dialog>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
