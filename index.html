@@ -22,6 +22,7 @@
   <main class="device">
     <header class="top">
       <button class="name" id="name" type="button" aria-label="Rename your cat">Brotato</button>
+      <button class="icon-btn" id="btnProfile" type="button" aria-label="Profile and diary"><i data-icon="info"></i></button>
       <div class="meta">
         <span id="age">Day 1</span>
         <span class="dot" aria-hidden="true">·</span>
@@ -30,26 +31,43 @@
     </header>
 
     <section class="stage" id="stage" aria-label="Your cat's room">
-      <div class="window" aria-hidden="true"><div class="sky"><span class="orb"></span></div></div>
+      <div class="window" aria-hidden="true">
+        <div class="sky"><span class="orb"></span><span class="rain"></span></div>
+        <span class="butterfly" id="butterfly"><i data-icon="butterfly"></i></span>
+      </div>
       <div class="frame" aria-hidden="true"></div>
+      <div class="scratch" id="scratch" aria-hidden="true" hidden></div>
       <div class="floor" aria-hidden="true"></div>
 
       <div class="poops" id="poops" aria-hidden="true"></div>
+      <div class="thing mess" id="mess" aria-hidden="true" hidden></div>
+      <div class="thing gift" id="gift" aria-hidden="true" hidden></div>
 
       <div class="speech" id="speech" role="status" aria-live="polite"></div>
 
       <button class="pet" id="pet" type="button" aria-label="Pet your cat">
         <span class="shadow" aria-hidden="true"></span>
-        <span class="sprite">
-          <img src="assets/cat.png" alt="" draggable="false" width="512" height="512">
-          <span class="lid lid-l" aria-hidden="true"></span>
-          <span class="lid lid-r" aria-hidden="true"></span>
+        <span class="body" aria-hidden="true">
+          <span class="sprite">
+            <img src="assets/cat.png" alt="" draggable="false" width="512" height="512">
+            <span class="lid lid-l"></span>
+            <span class="lid lid-r"></span>
+            <span class="shine shine-l"></span>
+            <span class="shine shine-r"></span>
+            <span class="blush blush-l"></span>
+            <span class="blush blush-r"></span>
+            <span class="tear tear-l"></span>
+            <span class="tear tear-r"></span>
+            <span class="mouth"></span>
+          </span>
         </span>
-        <span class="status-icon" id="statusIcon" aria-hidden="true"></span>
+        <span class="box-front" aria-hidden="true"><i data-icon="box"></i></span>
+        <span class="emote" id="emote" aria-hidden="true"></span>
       </button>
 
       <div class="fx" id="fx" aria-hidden="true"></div>
       <div class="dark" aria-hidden="true"></div>
+      <div class="flash" aria-hidden="true"></div>
       <div class="zzz" aria-hidden="true"><span>z</span><span>z</span><span>Z</span></div>
 
       <div class="game-hud" id="gameHud" hidden>
@@ -58,16 +76,22 @@
       </div>
       <button class="yarn" id="yarn" type="button" aria-label="Yarn ball" hidden></button>
 
-      <div class="menu" id="feedMenu" hidden>
-        <button type="button" data-food="meal"><i data-icon="fish"></i>Fish dinner</button>
-        <button type="button" data-food="snack"><i data-icon="cookie"></i>Treat</button>
-        <button type="button" data-food="cancel" class="ghost">Not now</button>
-      </div>
+      <div class="menu" id="menu" role="menu" hidden></div>
     </section>
 
+    <div class="context" id="context" aria-label="Things that need you"></div>
+
     <section class="stats" aria-label="Stats">
+      <div class="mood-row">
+        <span class="mood-icon" id="moodIcon" aria-hidden="true"></span>
+        <div class="mood-text">
+          <b id="moodLabel">Content</b>
+          <span id="moodDesc">Doing fine.</span>
+        </div>
+        <div class="bond" id="bond" role="img" aria-label="Bond"></div>
+      </div>
       <div class="stat" data-stat="hunger"><i data-icon="fish"></i><span class="label">Food</span><span class="bar"></span></div>
-      <div class="stat" data-stat="fun"><i data-icon="heart"></i><span class="label">Joy</span><span class="bar"></span></div>
+      <div class="stat" data-stat="fun"><i data-icon="note"></i><span class="label">Joy</span><span class="bar"></span></div>
       <div class="stat" data-stat="energy"><i data-icon="bolt"></i><span class="label">Energy</span><span class="bar"></span></div>
       <div class="stat" data-stat="clean"><i data-icon="drop"></i><span class="label">Clean</span><span class="bar"></span></div>
     </section>
@@ -75,9 +99,8 @@
     <nav class="actions" aria-label="Actions">
       <button type="button" id="btnFeed"><i data-icon="fish"></i><span>Feed</span></button>
       <button type="button" id="btnPlay"><i data-icon="yarn"></i><span>Play</span></button>
-      <button type="button" id="btnClean"><i data-icon="soap"></i><span>Clean</span></button>
+      <button type="button" id="btnCare"><i data-icon="brush"></i><span>Care</span></button>
       <button type="button" id="btnSleep"><i data-icon="moon"></i><span>Sleep</span></button>
-      <button type="button" id="btnMeds" class="meds" hidden><i data-icon="pill"></i><span>Meds</span></button>
     </nav>
 
     <p class="install" id="installHint" hidden>
@@ -95,6 +118,28 @@
     </form>
   </dialog>
 
-  <script src="app.js" defer></script>
+  <dialog id="profileDialog" class="profile">
+    <form method="dialog">
+      <header class="profile-head">
+        <img src="assets/cat.png" alt="" width="72" height="72">
+        <div>
+          <h2 id="pName">Brotato</h2>
+          <p id="pAge">Day 1</p>
+        </div>
+        <button type="submit" class="close" aria-label="Close">×</button>
+      </header>
+
+      <h3>About</h3>
+      <dl class="facts" id="pFacts"></dl>
+
+      <h3>Personality</h3>
+      <ul class="traits" id="pTraits"></ul>
+
+      <h3>Diary</h3>
+      <ol class="diary" id="pDiary"></ol>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

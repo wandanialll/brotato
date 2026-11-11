@@ -1,10 +1,14 @@
 // Bump VERSION whenever app files change so installed copies update.
-const VERSION = 'brotato-v1';
+const VERSION = 'brotato-v2';
 const CORE = [
   './',
   'index.html',
   'styles.css',
-  'app.js',
+  'js/main.js',
+  'js/state.js',
+  'js/sim.js',
+  'js/mood.js',
+  'js/icons.js',
   'manifest.webmanifest',
   'assets/cat.png',
   'icons/icon-192.png',
